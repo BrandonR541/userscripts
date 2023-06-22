@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Amazon Notepad
-// @namespace    https://github.com/LeoDupont/userscripts
+// @namespace    https://github.com/BrandonR541/userscripts
 // @version      0.1
 // @description  Lets you annotate Amazon products. Uses localStorage.
 // @author       LeoDupont
@@ -111,22 +111,47 @@ function getProductIdFromUrl(url) {
 //        -> Color and font changes due to personal preference
 //
 // =======================================================
-
 function showNotepad(productId, value, elmToAppendTo) {
+
+  //--------------------------
+  // Toggle Switch Background
+  //--------------------------
   const switchContainer = $('<div>')
     .attr({
-      id: 'amazon-notepad-switch-' + productId,
-      style: 'display: inline-block; vertical-align: middle; position: relative; width: 50px; height: 20px; background-color: #fadaeb; border-radius: 10px; cursor: pointer;',
+      id:    'amazon-notepad-switch-' + productId,
+      style: 'display:                inline-block;\
+              vertical-align:         middle;\
+              position:               relative;\
+              width:                  50px;\
+              height:                 20px;\
+              background-color:       #fadaeb;\
+              border-radius:          10px;\
+              cursor:                 pointer;',
     })
     .appendTo(elmToAppendTo);
 
+
+  //--------------------------
+  // Toggle Switch Handle
+  //--------------------------
   const switchHandle = $('<div>')
     .attr({
-      id: 'amazon-notepad-switch-handle-' + productId,
-      style: 'position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background-color: #b19aa6; border-radius: 50%; transition: left 0.2s ease;',
+      id:    'amazon-notepad-switch-handle-' + productId,
+      style: 'position:               absolute;\
+              top:                    2px;\
+              left:                   2px;\
+              width:                  16px;\
+              height:                 16px;\
+              background-color:       #b19aa6;\
+              border-radius:          50%;\
+              transition:             left 0.2s ease;',
     })
     .appendTo(switchContainer);
 
+
+  //--------------------------
+  // Text Field Style
+  //--------------------------
   const textarea = $('<textarea>')
     .attr({
       id: 'amazon-notepad-' + productId,
@@ -137,6 +162,10 @@ function showNotepad(productId, value, elmToAppendTo) {
     .val(value)
     .appendTo(elmToAppendTo);
 
+
+  //--------------------------
+  // Text Field Display Logic
+  //--------------------------
   const handleWidth = switchHandle.outerWidth();
   const containerWidth = switchContainer.outerWidth();
   const handleLeftPosition = containerWidth - handleWidth - 2;
