@@ -1,7 +1,8 @@
 # userscripts
 Scripts for web browsers using tampermonkey or similiar.
 
-**Amazon Notepad was created by LeoDupont https://github.com/LeoDupont/userscripts, all I have done is make a couple of cosmetic tweaks, Leo is awesome for figuring out all of the real code.**
+**Amazon Notepad**
+This was created by LeoDupont https://github.com/LeoDupont/userscripts, all I have done is make a couple of cosmetic tweaks, Leo is awesome for figuring out all of the real code.
   
     -> Toggle switch added to hide note section
             Pages with no notes default to hidden
