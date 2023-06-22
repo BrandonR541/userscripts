@@ -156,7 +156,14 @@ function showNotepad(productId, value, elmToAppendTo) {
     .attr({
       id: 'amazon-notepad-' + productId,
       name: 'amazon-notepad',
-      style: 'display: none; width: 100%; margin: 10px 0; background-color: #fa8dc7; color: black; font-size: 17px; resize: none; overflow: hidden;',
+      style: 'display:                none;\
+              width:                  100%;\
+              margin:                 10px 0;\
+              background-color:       #fa8dc7;\
+              color:                  black;\
+              font-size:              17px;\
+              resize:                 none;\
+              overflow:               hidden;',
       placeholder: 'Amazon Notepad...',
     })
     .val(value)
