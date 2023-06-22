@@ -76,10 +76,9 @@ function getProductIdFromUrl(url) {
 }
 
 // =======================================================
-// == UI
+// == Original UI Function from LeoDupont
 // =======================================================
-
-function showNotepad(productId, value, elmToAppendTo) {
+/* function showNotepad(productId, value, elmToAppendTo) {
   $('<input>')
     .attr({
       id: 'amazon-notepad-' + productId,
@@ -94,6 +93,87 @@ function showNotepad(productId, value, elmToAppendTo) {
       console.log('[AMAZON NOTEPAD] Storing new notes for ' + productId + ': ' + newNotes);
       saveProductNotes(productId, newNotes);
     });
+} */
+
+// =======================================================
+// == Tweaked UI Funtion:
+// =======================================================
+//
+//        -> Toggle switch added to hide note section
+//                Pages with no notes default to hidden
+//                Pages with notes default to open
+//                Search results only show the toggle for pages with notes and defaults to open
+//
+//        -> Changed from single line input to multiline
+//                Displays all lines instead of using a scroll bar
+//                Text input area automatically grows in height as you type
+//                
+//        -> Color and font changes due to personal preference
+//
+// =======================================================
+
+function showNotepad(productId, value, elmToAppendTo) {
+  const switchContainer = $('<div>')
+    .attr({
+      id: 'amazon-notepad-switch-' + productId,
+      style: 'display: inline-block; vertical-align: middle; position: relative; width: 50px; height: 20px; background-color: #fadaeb; border-radius: 10px; cursor: pointer;',
+    })
+    .appendTo(elmToAppendTo);
+
+  const switchHandle = $('<div>')
+    .attr({
+      id: 'amazon-notepad-switch-handle-' + productId,
+      style: 'position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background-color: #b19aa6; border-radius: 50%; transition: left 0.2s ease;',
+    })
+    .appendTo(switchContainer);
+
+  const textarea = $('<textarea>')
+    .attr({
+      id: 'amazon-notepad-' + productId,
+      name: 'amazon-notepad',
+      style: 'display: none; width: 100%; margin: 10px 0; background-color: #fa8dc7; color: black; font-size: 17px; resize: none; overflow: hidden;',
+      placeholder: 'Amazon Notepad...',
+    })
+    .val(value)
+    .appendTo(elmToAppendTo);
+
+  const handleWidth = switchHandle.outerWidth();
+  const containerWidth = switchContainer.outerWidth();
+  const handleLeftPosition = containerWidth - handleWidth - 2;
+
+  const toggleNotepad = function() {
+    const textareaEl = textarea[0];
+    const handleEl = switchHandle[0];
+
+    if (textareaEl.style.display === 'none') {
+      textareaEl.style.display = '';
+      textareaEl.style.height = ''; // Reset the height first
+      textareaEl.style.height = `${textareaEl.scrollHeight}px`; // Set the height to fit the content
+      handleEl.style.left = `${handleLeftPosition}px`;
+    } else {
+      textareaEl.style.display = 'none';
+      handleEl.style.left = '2px';
+    }
+  };
+
+  switchContainer.on('click', toggleNotepad);
+
+  textarea.on('input', function(e) {
+    const textareaEl = e.target;
+    textareaEl.style.height = ''; // Reset the height first
+    textareaEl.style.height = `${textareaEl.scrollHeight}px`; // Set the height to fit the content
+
+    const newNotes = e.target.value;
+    console.log('[AMAZON NOTEPAD] Storing new notes for ' + productId + ': ' + newNotes);
+    saveProductNotes(productId, newNotes);
+  });
+
+  // Expand the textarea initially to fit the content if there is existing text
+  if (value.trim() !== '') {
+    textarea.trigger('input');
+    switchHandle.css('left', `${handleLeftPosition}px`);
+    textarea.show().trigger('input'); // Trigger input event explicitly
+  }
 }
 
 // =======================================================
