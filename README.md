@@ -37,3 +37,5 @@ Originally created by LeoDupont https://github.com/LeoDupont/userscripts, all I 
                 
     -> Color and font changes due to personal preference
 
+
+------------------
