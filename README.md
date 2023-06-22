@@ -13,14 +13,16 @@ was created by LeoDupont https://github.com/LeoDupont/userscripts, all I have do
   * on search results pages (if notes were found).
 
  Notes are saved on 'change' event.
- => the input need to loose focus for the event to be triggered,
- => a simple Tab or a click away will do the job.
+  => the input need to loose focus for the event to be triggered,
+  => a simple Tab or a click away will do the job.
 
  Uses the browser's localStorage to store notes.
- => notes are not synced anywhere on the Internet.
+  => notes are not synced anywhere on the Internet.
 
+----------
 
   My Changes:
+  
     -> Toggle switch added to hide note section
             Pages with no notes default to hidden
             Pages with notes default to open
