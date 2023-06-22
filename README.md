@@ -9,7 +9,7 @@ was created by LeoDupont https://github.com/LeoDupont/userscripts, all I have do
 
 ---------
 
-Functiionaliity:
+Functionality:
 
    -> Displays a simple text input under the product's name
          on product pages (always),
@@ -21,6 +21,21 @@ Functiionaliity:
 
    -> Uses the browser's localStorage to store notes.
          notes are not synced anywhere on the Internet.
+
+
+  Functionality:
+  
+    -> Displays a simple text input under the product's name
+         on product pages (always),
+         on search results pages (if notes were found).
+
+    -> Notes are saved on 'change' event.
+         the input need to loose focus for the event to be triggered,
+         a simple Tab or a click away will do the job.
+                
+    -> Uses the browser's localStorage to store notes.
+         notes are not synced anywhere on the Internet.
+
 
 ----------
 
