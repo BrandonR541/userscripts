@@ -5,22 +5,7 @@ Scripts for web browsers using tampermonkey or similiar.
 
 
 **Amazon Notepad** 
-was created by LeoDupont https://github.com/LeoDupont/userscripts, all I have done is make a couple of cosmetic tweaks, Leo is awesome for figuring out all of the real code:
-
----------
-
-Functionality:
-
-   -> Displays a simple text input under the product's name
-         on product pages (always),
-         on search results pages (if notes were found).
-
-   -> Notes are saved on 'change' event.
-         the input need to loose focus for the event to be triggered,
-         a simple Tab or a click away will do the job.
-
-   -> Uses the browser's localStorage to store notes.
-         notes are not synced anywhere on the Internet.
+Originally created by LeoDupont https://github.com/LeoDupont/userscripts, all I have done is make a couple of cosmetic tweaks, Leo is awesome for figuring out all of the real code
 
 
   Functionality:
@@ -37,7 +22,6 @@ Functionality:
          notes are not synced anywhere on the Internet.
 
 
-----------
 
   My Changes:
   
